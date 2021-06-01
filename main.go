@@ -31,16 +31,21 @@ func main() {
 	}
 
 	var s, sep string
-	if len(os.Args) > 2 {
-		for i := 2; i < len(os.Args); i++ {
-			s += sep + os.Args[i]
-			sep = " "
-		}
-	} else {
+	if len(os.Args) < 3 {
 		color.Set(color.FgRed)
 		fmt.Println("Введите название рецепта после флага")
 		color.Unset()
 		log.Fatal()
+	} else if len(os.Args) > 3 {
+		color.Set(color.FgRed)
+		fmt.Println("После флага должен быть один аргумент")
+		color.Unset()
+		log.Fatal()
+	} else {
+		for i := 2; i < len(os.Args); i++ {
+			s += sep + os.Args[i]
+			sep = " "
+		}
 	}
 
 	fmt.Println(s)
