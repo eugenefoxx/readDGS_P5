@@ -30,7 +30,7 @@ func main() {
 		log.Fatal()
 	}
 
-	var s, sep string
+	var s string
 	if len(os.Args) < 3 {
 		color.Set(color.FgRed)
 		fmt.Println("Введите название рецепта после флага")
@@ -43,8 +43,7 @@ func main() {
 		log.Fatal()
 	} else {
 		for i := 2; i < len(os.Args); i++ {
-			s += sep + os.Args[i]
-			sep = " "
+			s += os.Args[i]
 		}
 	}
 
